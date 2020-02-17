@@ -4,16 +4,27 @@ shopt -s extglob
 echo "Welcome To RegEx Problems"
 
 validName="^[A-Z][a-z]{3,}$"
+validEmail="^([a-zA-Z]{3,}([.|_|+|-]?[a-zA-Z0-9]+)?[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}([.]?[a-zA-Z]{2,3})?)$"
 
-function checkValid()
-{
+function checkValid(){
 	local name=$1
 	if [[ $name =~ $validName ]]
 	then
-			echo "Valid Name"
+			echo "Your Name is Valid."
 	else
-			echo "Invalid Name"
+			echo "Plz Enter Valid Name."
 			exit
+	fi
+}
+
+function checkValidEmail(){
+
+	local email=$1
+	if [[ $email =~ $validEmail ]]
+	then
+			echo "Your Email is Valid."
+	else
+			echo "Plz Enter Valid Email ID."
 	fi
 }
 
@@ -23,3 +34,6 @@ checkValid $firstName
 echo "Enter Last Name: "
 read lastName
 checkValid $lastName
+echo "Enter Email-ID: "
+read emailId
+checkValidEmail $emailId
